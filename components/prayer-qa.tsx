@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { ChevronDown, ChevronUp, HelpCircle } from "lucide-react"
+import { ChevronDown, ChevronUp, HelpCircle } from 'lucide-react'
 
 const qaData = [
   {
@@ -40,38 +40,38 @@ export function PrayerQA() {
   }
 
   return (
-    <div className="mt-16">
-      <div className="wood-texture backdrop-blur-sm rounded-lg p-8 max-w-4xl mx-auto saisen-shadow wa-border">
-        <div className="text-center mb-8">
-          <h3 className="text-3xl font-bold text-red-900 mb-4 flex items-center justify-center gap-3">
-            <HelpCircle className="w-8 h-8 text-amber-600" />
+    <div className="mt-8 md:mt-16">
+      <div className="wood-texture backdrop-blur-sm rounded-lg p-6 md:p-8 max-w-4xl mx-auto saisen-shadow wa-border">
+        <div className="text-center mb-6 md:mb-8">
+          <h3 className="text-2xl md:text-3xl font-bold text-red-900 mb-3 md:mb-4 flex items-center justify-center gap-2 md:gap-3">
+            <HelpCircle className="w-6 h-6 md:w-8 md:h-8 text-amber-600" />
             ご祈祷Q&A
-            <HelpCircle className="w-8 h-8 text-amber-600" />
+            <HelpCircle className="w-6 h-6 md:w-8 md:h-8 text-amber-600" />
           </h3>
-          <p className="text-red-800 text-lg">よくいただくご質問にお答えいたします</p>
+          <p className="text-red-800 text-base md:text-lg">よくいただくご質問にお答えいたします</p>
         </div>
 
-        <div className="space-y-4">
+        <div className="space-y-3 md:space-y-4">
           {qaData.map((qa, index) => (
             <Card
               key={index}
               className="border-2 border-red-300 bg-gradient-to-b from-amber-50 to-yellow-100 overflow-hidden transition-all duration-300 hover:shadow-lg"
             >
               <CardHeader
-                className="cursor-pointer hover:bg-red-50 transition-colors duration-200 pb-4"
+                className="cursor-pointer hover:bg-red-50 transition-colors duration-200 pb-3 md:pb-4"
                 onClick={() => toggleQuestion(index)}
               >
-                <CardTitle className="flex items-center justify-between text-red-900 text-lg">
-                  <span className="flex items-center gap-3">
-                    <span className="bg-red-800 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">
+                <CardTitle className="flex items-center justify-between text-red-900 text-base md:text-lg">
+                  <span className="flex items-center gap-2 md:gap-3 text-left">
+                    <span className="bg-red-800 text-white rounded-full w-6 h-6 md:w-8 md:h-8 flex items-center justify-center text-xs md:text-sm font-bold flex-shrink-0">
                       Q{index + 1}
                     </span>
                     {qa.question}
                   </span>
                   {openIndex === index ? (
-                    <ChevronUp className="w-5 h-5 text-red-600 flex-shrink-0" />
+                    <ChevronUp className="w-4 h-4 md:w-5 md:h-5 text-red-600 flex-shrink-0 ml-2" />
                   ) : (
-                    <ChevronDown className="w-5 h-5 text-red-600 flex-shrink-0" />
+                    <ChevronDown className="w-4 h-4 md:w-5 md:h-5 text-red-600 flex-shrink-0 ml-2" />
                   )}
                 </CardTitle>
               </CardHeader>
@@ -81,12 +81,12 @@ export function PrayerQA() {
                   openIndex === index ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
                 } overflow-hidden`}
               >
-                <CardContent className="pt-0 pb-6">
-                  <div className="flex items-start gap-3">
-                    <span className="bg-amber-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold flex-shrink-0 mt-1">
+                <CardContent className="pt-0 pb-4 md:pb-6">
+                  <div className="flex items-start gap-2 md:gap-3">
+                    <span className="bg-amber-600 text-white rounded-full w-6 h-6 md:w-8 md:h-8 flex items-center justify-center text-xs md:text-sm font-bold flex-shrink-0 mt-1">
                       A
                     </span>
-                    <p className="text-red-800 leading-relaxed text-pretty">{qa.answer}</p>
+                    <p className="text-red-800 leading-relaxed text-pretty text-sm md:text-base">{qa.answer}</p>
                   </div>
                 </CardContent>
               </div>
@@ -94,15 +94,15 @@ export function PrayerQA() {
           ))}
         </div>
 
-        <div className="mt-8 text-center">
-          <div className="bg-gradient-to-r from-red-100 to-amber-100 rounded-lg p-6 border-2 border-red-300">
-            <h4 className="text-xl font-bold text-red-900 mb-3">個別相談をご希望の方へ</h4>
-            <p className="text-red-800 mb-4 text-sm leading-relaxed">
+        <div className="mt-6 md:mt-8 text-center">
+          <div className="bg-gradient-to-r from-red-100 to-amber-100 rounded-lg p-4 md:p-6 border-2 border-red-300">
+            <h4 className="text-lg md:text-xl font-bold text-red-900 mb-2 md:mb-3">個別相談をご希望の方へ</h4>
+            <p className="text-red-800 mb-3 md:mb-4 text-xs md:text-sm leading-relaxed">
               より詳細な霊視や個別のご相談をご希望の方は、公式LINEにてお気軽にお問い合わせください。
             </p>
             <button
               onClick={() => window.open("https://lin.ee/FsxTvpY", "_blank")}
-              className="bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-amber-600 hover:to-yellow-600 text-red-900 font-bold py-3 px-6 rounded-lg shadow-lg transition-all duration-300 hover:scale-105 border-2 border-red-700"
+              className="bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-amber-600 hover:to-yellow-600 text-red-900 font-bold py-2 px-4 md:py-3 md:px-6 rounded-lg shadow-lg transition-all duration-300 hover:scale-105 border-2 border-red-700 text-sm md:text-base"
             >
               公式LINEで詳しく相談する
             </button>

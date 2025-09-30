@@ -4,18 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Torii } from "@/components/torii-icon"
-import {
-  ArrowLeft,
-  Heart,
-  Briefcase,
-  Home,
-  Sparkles,
-  Shield,
-  Users,
-  DollarSign,
-  GraduationCap,
-  TrendingUp,
-} from "lucide-react"
+import { ArrowLeft, Heart, Briefcase, Home, Sparkles, Shield, Users, DollarSign, GraduationCap, TrendingUp } from 'lucide-react'
 
 import { PrayerQA } from "@/components/prayer-qa"
 import { SiteFooter } from "@/components/site-footer"
@@ -215,51 +204,51 @@ export default function PrayerTypesPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-red-950 via-red-900 to-amber-900">
       {/* ヘッダー */}
-      <header className="shrine-gradient text-white py-8 shadow-2xl">
+      <header className="shrine-gradient text-white py-6 md:py-8 shadow-2xl">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between">
             <Button
               onClick={handleBackToHome}
               variant="outline"
-              className="bg-transparent border-white text-white hover:bg-white hover:text-red-800 transition-all duration-300 flex items-center gap-2"
+              className="bg-transparent border-white text-white hover:bg-white hover:text-red-800 transition-all duration-300 flex items-center gap-2 text-sm md:text-base"
             >
               <ArrowLeft className="w-4 h-4" />
-              戻る
+              <span className="hidden sm:inline">戻る</span>
             </Button>
 
-            <div className="flex items-center gap-3">
-              <Torii className="w-8 h-8" />
-              <h1 className="text-4xl font-bold text-balance">ツインレイ御祈祷</h1>
-              <Torii className="w-8 h-8" />
+            <div className="flex items-center gap-2 md:gap-3">
+              <Torii className="w-6 h-6 md:w-8 md:h-8" />
+              <h1 className="text-2xl md:text-4xl font-bold text-balance">ツインレイ御祈祷</h1>
+              <Torii className="w-6 h-6 md:w-8 md:h-8" />
             </div>
 
-            <div className="w-20"></div>
+            <div className="w-12 sm:w-20"></div>
           </div>
         </div>
       </header>
 
       {/* メインコンテンツ */}
-      <main className="container mx-auto px-4 py-12">
-        <div className="text-center mb-12">
-          <h2 className="text-5xl font-bold text-amber-300 mb-6 text-balance">御祈祷の種類をお選びください</h2>
-          <p className="text-xl text-amber-100 max-w-4xl mx-auto text-pretty leading-relaxed">
+      <main className="container mx-auto px-4 py-8 md:py-12">
+        <div className="text-center mb-8 md:mb-12">
+          <h2 className="text-3xl md:text-5xl font-bold text-amber-300 mb-4 md:mb-6 text-balance">御祈祷の種類をお選びください</h2>
+          <p className="text-base md:text-xl text-amber-100 max-w-4xl mx-auto text-pretty leading-relaxed">
             あなたの願いに最も適した御祈祷をお選びください。
             それぞれの御祈祷には、専門的な祈願文と守護霊からの特別なメッセージが込められています。
           </p>
         </div>
 
         {/* 恋愛系御祈祷 */}
-        <section className="mb-16">
-          <div className="text-center mb-8">
-            <h3 className="text-3xl font-bold text-rose-300 mb-4 flex items-center justify-center gap-3">
-              <Heart className="w-8 h-8" />
+        <section className="mb-12 md:mb-16">
+          <div className="text-center mb-6 md:mb-8">
+            <h3 className="text-2xl md:text-3xl font-bold text-rose-300 mb-3 md:mb-4 flex items-center justify-center gap-2 md:gap-3">
+              <Heart className="w-6 h-6 md:w-8 md:h-8" />
               恋愛系御祈祷
-              <Heart className="w-8 h-8" />
+              <Heart className="w-6 h-6 md:w-8 md:h-8" />
             </h3>
-            <p className="text-amber-200 text-lg">愛と縁結びに関する専門的な御祈祷</p>
+            <p className="text-amber-200 text-base md:text-lg">愛と縁結びに関する専門的な御祈祷</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 max-w-6xl mx-auto">
             {loveTypes.map((prayer) => {
               const IconComponent = prayer.icon
               return (
@@ -268,18 +257,18 @@ export default function PrayerTypesPage() {
                   className="relative overflow-hidden transition-all duration-500 hover:shadow-2xl hover:scale-105 cursor-pointer border-3 saisen-shadow border-rose-600 hover:border-rose-400 bg-gradient-to-b from-rose-50 to-pink-100"
                   onClick={() => handlePrayerSelect(prayer.id)}
                 >
-                  <CardHeader className={`bg-gradient-to-br ${prayer.color} text-white pb-4`}>
-                    <div className="flex items-center gap-3 mb-2">
-                      <IconComponent className="w-6 h-6" />
-                      <Badge variant="secondary" className="bg-white/20 text-white border-white/30">
+                  <CardHeader className={`bg-gradient-to-br ${prayer.color} text-white pb-3 md:pb-4`}>
+                    <div className="flex items-center gap-2 md:gap-3 mb-2">
+                      <IconComponent className="w-5 h-5 md:w-6 md:h-6" />
+                      <Badge variant="secondary" className="bg-white/20 text-white border-white/30 text-xs md:text-sm">
                         {prayer.category}
                       </Badge>
                     </div>
-                    <CardTitle className="text-xl text-balance">{prayer.title}</CardTitle>
+                    <CardTitle className="text-lg md:text-xl text-balance">{prayer.title}</CardTitle>
                   </CardHeader>
 
-                  <CardContent className="pt-6 bg-gradient-to-b from-rose-50 to-pink-100">
-                    <CardDescription className="text-stone-700 text-pretty leading-relaxed">
+                  <CardContent className="pt-4 md:pt-6 bg-gradient-to-b from-rose-50 to-pink-100">
+                    <CardDescription className="text-stone-700 text-sm md:text-base text-pretty leading-relaxed">
                       {prayer.description}
                     </CardDescription>
                   </CardContent>
@@ -291,16 +280,16 @@ export default function PrayerTypesPage() {
 
         {/* その他の御祈祷 */}
         <section>
-          <div className="text-center mb-8">
-            <h3 className="text-3xl font-bold text-amber-300 mb-4 flex items-center justify-center gap-3">
-              <Sparkles className="w-8 h-8" />
+          <div className="text-center mb-6 md:mb-8">
+            <h3 className="text-2xl md:text-3xl font-bold text-amber-300 mb-3 md:mb-4 flex items-center justify-center gap-2 md:gap-3">
+              <Sparkles className="w-6 h-6 md:w-8 md:h-8" />
               その他の御祈祷
-              <Sparkles className="w-8 h-8" />
+              <Sparkles className="w-6 h-6 md:w-8 md:h-8" />
             </h3>
-            <p className="text-amber-200 text-lg">人生全般の願いを叶える多様な御祈祷</p>
+            <p className="text-amber-200 text-base md:text-lg">人生全般の願いを叶える多様な御祈祷</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 max-w-6xl mx-auto">
             {otherTypes.map((prayer) => {
               const IconComponent = prayer.icon
               return (
@@ -309,18 +298,18 @@ export default function PrayerTypesPage() {
                   className="relative overflow-hidden transition-all duration-500 hover:shadow-2xl hover:scale-105 cursor-pointer border-3 saisen-shadow border-amber-600 hover:border-amber-400 bg-gradient-to-b from-amber-50 to-yellow-100"
                   onClick={() => handlePrayerSelect(prayer.id)}
                 >
-                  <CardHeader className={`bg-gradient-to-br ${prayer.color} text-white pb-4`}>
-                    <div className="flex items-center gap-3 mb-2">
-                      <IconComponent className="w-6 h-6" />
-                      <Badge variant="secondary" className="bg-white/20 text-white border-white/30">
+                  <CardHeader className={`bg-gradient-to-br ${prayer.color} text-white pb-3 md:pb-4`}>
+                    <div className="flex items-center gap-2 md:gap-3 mb-2">
+                      <IconComponent className="w-5 h-5 md:w-6 md:h-6" />
+                      <Badge variant="secondary" className="bg-white/20 text-white border-white/30 text-xs md:text-sm">
                         {prayer.category}
                       </Badge>
                     </div>
-                    <CardTitle className="text-xl text-balance">{prayer.title}</CardTitle>
+                    <CardTitle className="text-lg md:text-xl text-balance">{prayer.title}</CardTitle>
                   </CardHeader>
 
-                  <CardContent className="pt-6 bg-gradient-to-b from-amber-50 to-yellow-100">
-                    <CardDescription className="text-stone-700 text-pretty leading-relaxed">
+                  <CardContent className="pt-4 md:pt-6 bg-gradient-to-b from-amber-50 to-yellow-100">
+                    <CardDescription className="text-stone-700 text-sm md:text-base text-pretty leading-relaxed">
                       {prayer.description}
                     </CardDescription>
                   </CardContent>
@@ -331,12 +320,12 @@ export default function PrayerTypesPage() {
         </section>
 
         {/* フッター情報 */}
-        <div className="mt-16 text-center">
-          <div className="wood-texture backdrop-blur-sm rounded-lg p-8 max-w-4xl mx-auto saisen-shadow wa-border">
-            <h3 className="text-2xl font-bold text-red-900 mb-4">
+        <div className="mt-12 md:mt-16 text-center">
+          <div className="wood-texture backdrop-blur-sm rounded-lg p-6 md:p-8 max-w-4xl mx-auto saisen-shadow wa-border">
+            <h3 className="text-lg md:text-2xl font-bold text-red-900 mb-3 md:mb-4">
               (御祈祷・御祈願・御祈念)占いで掲載している情報について
             </h3>
-            <p className="text-red-800 leading-relaxed text-pretty">
+            <p className="text-sm md:text-base text-red-800 leading-relaxed text-pretty">
               (御祈祷・御祈願・御祈念)占いサービスは娯楽を目的としたものであり、占いの結果および占いに伴う施術行為について、その効果、信頼性、正確性、完全性、有効性、特定の目的への適合性、実現性等を当社が保証するものではありません。
               サービスの結果をどのように利用するかは、お客様ご自身の自己責任において判断をお願いいたします。
               占いの結果およびその内容を踏まえておこなったお客様の行動により生ずる一切の損害について、当社および情報の提供者は一切責任を負いかねます。

@@ -5,21 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Torii } from "@/components/torii-icon"
-import {
-  ArrowLeft,
-  Heart,
-  Star,
-  Crown,
-  Gem,
-  Briefcase,
-  Home,
-  Sparkles,
-  Shield,
-  Users,
-  DollarSign,
-  GraduationCap,
-  TrendingUp,
-} from "lucide-react"
+import { ArrowLeft, Heart, Star, Crown, Gem, Briefcase, Home, Sparkles, Shield, Users, DollarSign, GraduationCap, TrendingUp } from 'lucide-react'
 
 import { PrayerQA } from "@/components/prayer-qa"
 import { SiteFooter } from "@/components/site-footer"
@@ -286,8 +272,8 @@ export default function PrayerDetailPage({ params }: { params: { id: string } })
   if (!prayer) {
     return (
       <div className="min-h-screen bg-gradient-to-b from-red-950 via-red-900 to-amber-900 flex items-center justify-center">
-        <div className="text-center text-white">
-          <h1 className="text-4xl font-bold mb-4">御祈祷が見つかりません</h1>
+        <div className="text-center text-white px-4">
+          <h1 className="text-2xl md:text-4xl font-bold mb-4">御祈祷が見つかりません</h1>
           <Button onClick={() => (window.location.href = "/prayer-types")} className="shrine-gold-gradient">
             御祈祷一覧に戻る
           </Button>
@@ -332,131 +318,132 @@ export default function PrayerDetailPage({ params }: { params: { id: string } })
   return (
     <div className="min-h-screen bg-gradient-to-b from-red-950 via-red-900 to-amber-900">
       {/* ヘッダー */}
-      <header className="shrine-gradient text-white py-8 shadow-2xl">
+      <header className="shrine-gradient text-white py-6 md:py-8 shadow-2xl">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between">
             <Button
               onClick={handleBackToPrayerTypes}
               variant="outline"
-              className="bg-transparent border-white text-white hover:bg-white hover:text-red-800 transition-all duration-300 flex items-center gap-2"
+              className="bg-transparent border-white text-white hover:bg-white hover:text-red-800 transition-all duration-300 flex items-center gap-2 text-sm md:text-base"
             >
               <ArrowLeft className="w-4 h-4" />
-              御祈祷一覧に戻る
+              <span className="hidden sm:inline">御祈祷一覧に戻る</span>
+              <span className="sm:hidden">戻る</span>
             </Button>
 
-            <div className="flex items-center gap-3">
-              <Torii className="w-8 h-8" />
-              <h1 className="text-4xl font-bold text-balance">{prayer.title}</h1>
-              <Torii className="w-8 h-8" />
+            <div className="flex items-center gap-2 md:gap-3">
+              <Torii className="w-6 h-6 md:w-8 md:h-8" />
+              <h1 className="text-2xl md:text-4xl font-bold text-balance">{prayer.title}</h1>
+              <Torii className="w-6 h-6 md:w-8 md:h-8" />
             </div>
 
-            <div className="w-32"></div>
+            <div className="w-16 sm:w-32"></div>
           </div>
         </div>
       </header>
 
       {/* メインコンテンツ */}
-      <main className="container mx-auto px-4 py-12">
+      <main className="container mx-auto px-4 py-8 md:py-12">
         {/* 御祈祷詳細 */}
-        <div className="max-w-4xl mx-auto mb-12">
+        <div className="max-w-4xl mx-auto mb-8 md:mb-12">
           <Card className="saisen-shadow wa-border bg-gradient-to-b from-amber-50 to-yellow-100">
-            <CardHeader className={`bg-gradient-to-br ${prayer.color} text-white pb-6`}>
-              <div className="flex items-center gap-4 mb-4">
-                <IconComponent className="w-10 h-10" />
+            <CardHeader className={`bg-gradient-to-br ${prayer.color} text-white pb-4 md:pb-6`}>
+              <div className="flex items-center gap-3 md:gap-4 mb-3 md:mb-4">
+                <IconComponent className="w-8 h-8 md:w-10 md:h-10" />
                 <div>
-                  <Badge variant="secondary" className="bg-white/20 text-white border-white/30 mb-2">
+                  <Badge variant="secondary" className="bg-white/20 text-white border-white/30 mb-2 text-xs md:text-sm">
                     {prayer.category}
                   </Badge>
-                  <CardTitle className="text-3xl text-balance">{prayer.title}</CardTitle>
+                  <CardTitle className="text-2xl md:text-3xl text-balance">{prayer.title}</CardTitle>
                 </div>
               </div>
-              <CardDescription className="text-white/90 text-lg text-pretty">{prayer.description}</CardDescription>
+              <CardDescription className="text-white/90 text-base md:text-lg text-pretty">{prayer.description}</CardDescription>
             </CardHeader>
 
-            <CardContent className="pt-8">
-              <div className="space-y-6">
+            <CardContent className="pt-6 md:pt-8">
+              <div className="space-y-4 md:space-y-6">
                 <div>
-                  <h3 className="text-2xl font-bold text-red-900 mb-4">詳細説明</h3>
-                  <p className="text-red-800 leading-relaxed text-pretty">{prayer.detailedDescription}</p>
+                  <h3 className="text-xl md:text-2xl font-bold text-red-900 mb-3 md:mb-4">詳細説明</h3>
+                  <p className="text-sm md:text-base text-red-800 leading-relaxed text-pretty">{prayer.detailedDescription}</p>
                 </div>
 
                 {prayer.category === "恋愛系" && (
                   <div>
-                    <h3 className="text-2xl font-bold text-red-900 mb-4">御祈祷の流れ</h3>
-                    <div className="space-y-4">
-                      <div className="flex gap-4">
-                        <div className="flex-shrink-0 w-8 h-8 bg-red-800 text-white rounded-full flex items-center justify-center font-bold">
+                    <h3 className="text-xl md:text-2xl font-bold text-red-900 mb-3 md:mb-4">御祈祷の流れ</h3>
+                    <div className="space-y-3 md:space-y-4">
+                      <div className="flex gap-3 md:gap-4">
+                        <div className="flex-shrink-0 w-6 h-6 md:w-8 md:h-8 bg-red-800 text-white rounded-full flex items-center justify-center font-bold text-sm md:text-base">
                           1
                         </div>
                         <div>
-                          <h4 className="font-bold text-red-900 mb-1">心を整える</h4>
-                          <p className="text-red-800 text-sm leading-relaxed">
+                          <h4 className="font-bold text-red-900 mb-1 text-sm md:text-base">心を整える</h4>
+                          <p className="text-red-800 text-xs md:text-sm leading-relaxed">
                             静かに深呼吸をし、日々の雑念や不安をそっと手放していきます。心を穏やかに整えることで、祈りが澄んだ形で届きやすくなります。
                           </p>
                         </div>
                       </div>
-                      <div className="flex gap-4">
-                        <div className="flex-shrink-0 w-8 h-8 bg-red-800 text-white rounded-full flex items-center justify-center font-bold">
+                      <div className="flex gap-3 md:gap-4">
+                        <div className="flex-shrink-0 w-6 h-6 md:w-8 md:h-8 bg-red-800 text-white rounded-full flex items-center justify-center font-bold text-sm md:text-base">
                           2
                         </div>
                         <div>
-                          <h4 className="font-bold text-red-900 mb-1">相手のことを思い描く</h4>
-                          <p className="text-red-800 text-sm leading-relaxed">
+                          <h4 className="font-bold text-red-900 mb-1 text-sm md:text-base">相手のことを思い描く</h4>
+                          <p className="text-red-800 text-xs md:text-sm leading-relaxed">
                             祈りを届けたい大切な方や願いの対象を、心の中にやさしく思い浮かべます。相手の笑顔や温かな姿を鮮明に描くことで、祈りの力が深まります。
                           </p>
                         </div>
                       </div>
-                      <div className="flex gap-4">
-                        <div className="flex-shrink-0 w-8 h-8 bg-red-800 text-white rounded-full flex items-center justify-center font-bold">
+                      <div className="flex gap-3 md:gap-4">
+                        <div className="flex-shrink-0 w-6 h-6 md:w-8 md:h-8 bg-red-800 text-white rounded-full flex items-center justify-center font-bold text-sm md:text-base">
                           3
                         </div>
                         <div>
-                          <h4 className="font-bold text-red-900 mb-1">願いを心に言葉として刻む</h4>
-                          <p className="text-red-800 text-sm leading-relaxed">
+                          <h4 className="font-bold text-red-900 mb-1 text-sm md:text-base">願いを心に言葉として刻む</h4>
+                          <p className="text-red-800 text-xs md:text-sm leading-relaxed">
                             「復縁を叶えたい」「良縁を授かりたい」など、ご自身の願いをはっきりと心の中で言葉にいたします。明確な祈りは、より強く神仏へと届きます。
                           </p>
                         </div>
                       </div>
-                      <div className="flex gap-4">
-                        <div className="flex-shrink-0 w-8 h-8 bg-red-800 text-white rounded-full flex items-center justify-center font-bold">
+                      <div className="flex gap-3 md:gap-4">
+                        <div className="flex-shrink-0 w-6 h-6 md:w-8 md:h-8 bg-red-800 text-white rounded-full flex items-center justify-center font-bold text-sm md:text-base">
                           4
                         </div>
                         <div>
-                          <h4 className="font-bold text-red-900 mb-1">ご祈祷をお受けになる</h4>
-                          <p className="text-red-800 text-sm leading-relaxed">
+                          <h4 className="font-bold text-red-900 mb-1 text-sm md:text-base">ご祈祷をお受けになる</h4>
+                          <p className="text-red-800 text-xs md:text-sm leading-relaxed">
                             プロのツインレイ祈祷師が、神仏へと願いを真心込めてお届けし、良縁を結ぶためのエネルギーを整えてまいります。
                           </p>
                         </div>
                       </div>
-                      <div className="flex gap-4">
-                        <div className="flex-shrink-0 w-8 h-8 bg-red-800 text-white rounded-full flex items-center justify-center font-bold">
+                      <div className="flex gap-3 md:gap-4">
+                        <div className="flex-shrink-0 w-6 h-6 md:w-8 md:h-8 bg-red-800 text-white rounded-full flex items-center justify-center font-bold text-sm md:text-base">
                           5
                         </div>
                         <div>
-                          <h4 className="font-bold text-red-900 mb-1">祈りを受け取る</h4>
-                          <p className="text-red-800 text-sm leading-relaxed">
+                          <h4 className="font-bold text-red-900 mb-1 text-sm md:text-base">祈りを受け取る</h4>
+                          <p className="text-red-800 text-xs md:text-sm leading-relaxed">
                             ご祈祷によって注がれる温かな力が、ご自身と大切な方へ届いていくことを静かに感じながら、心を委ねるように過ごします。
                           </p>
                         </div>
                       </div>
-                      <div className="flex gap-4">
-                        <div className="flex-shrink-0 w-8 h-8 bg-red-800 text-white rounded-full flex items-center justify-center font-bold">
+                      <div className="flex gap-3 md:gap-4">
+                        <div className="flex-shrink-0 w-6 h-6 md:w-8 md:h-8 bg-red-800 text-white rounded-full flex items-center justify-center font-bold text-sm md:text-base">
                           6
                         </div>
                         <div>
-                          <h4 className="font-bold text-red-900 mb-1">感謝を捧げる</h4>
-                          <p className="text-red-800 text-sm leading-relaxed">
+                          <h4 className="font-bold text-red-900 mb-1 text-sm md:text-base">感謝を捧げる</h4>
+                          <p className="text-red-800 text-xs md:text-sm leading-relaxed">
                             「ありがとうございます」と心の中でそっと伝えます。感謝の気持ちは祈りの力をさらに深く結びつけてくれます。
                           </p>
                         </div>
                       </div>
-                      <div className="flex gap-4">
-                        <div className="flex-shrink-0 w-8 h-8 bg-red-800 text-white rounded-full flex items-center justify-center font-bold">
+                      <div className="flex gap-3 md:gap-4">
+                        <div className="flex-shrink-0 w-6 h-6 md:w-8 md:h-8 bg-red-800 text-white rounded-full flex items-center justify-center font-bold text-sm md:text-base">
                           7
                         </div>
                         <div>
-                          <h4 className="font-bold text-red-900 mb-1">日常を前向きに歩む</h4>
-                          <p className="text-red-800 text-sm leading-relaxed">
+                          <h4 className="font-bold text-red-900 mb-1 text-sm md:text-base">日常を前向きに歩む</h4>
+                          <p className="text-red-800 text-xs md:text-sm leading-relaxed">
                             ご祈祷を受けられた後は、相手に思いやりをもって接する、自分自身を磨くなど、願いにふさわしい日々を大切にお過ごしください。その積み重ねが成就への道を開いてまいります。
                           </p>
                         </div>
@@ -470,14 +457,14 @@ export default function PrayerDetailPage({ params }: { params: { id: string } })
         </div>
 
         {/* 初穂料選択 */}
-        <div className="text-center mb-8">
-          <h2 className="text-4xl font-bold text-amber-300 mb-4 text-balance">初穂料をお選びください</h2>
-          <p className="text-xl text-amber-100 max-w-3xl mx-auto text-pretty">
+        <div className="text-center mb-6 md:mb-8">
+          <h2 className="text-3xl md:text-4xl font-bold text-amber-300 mb-3 md:mb-4 text-balance">初穂料をお選びください</h2>
+          <p className="text-base md:text-xl text-amber-100 max-w-3xl mx-auto text-pretty">
             お気持ちに応じた初穂料をお選びください。金額に応じて、より詳細で強力な御祈祷をお受けいただけます。
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 max-w-7xl mx-auto mb-8 md:mb-12">
           {priceOptions.map((option) => {
             const OptionIcon = option.icon
             return (
@@ -492,8 +479,8 @@ export default function PrayerDetailPage({ params }: { params: { id: string } })
               >
                 {selectedAmount === option.amount && (
                   <div className="absolute top-2 right-2 z-10">
-                    <div className="bg-amber-400 text-red-900 rounded-full p-2 shadow-lg">
-                      <Star className="w-5 h-5 fill-current" />
+                    <div className="bg-amber-400 text-red-900 rounded-full p-1.5 md:p-2 shadow-lg">
+                      <Star className="w-4 h-4 md:w-5 md:h-5 fill-current" />
                     </div>
                   </div>
                 )}
@@ -501,24 +488,24 @@ export default function PrayerDetailPage({ params }: { params: { id: string } })
                 <CardHeader
                   className={`${
                     option.color === "gold-shimmer" ? "gold-shimmer" : `bg-gradient-to-br ${option.color}`
-                  } text-white pb-6 pt-6 ${selectedAmount === option.amount ? "shadow-inner" : ""}`}
+                  } text-white pb-4 md:pb-6 pt-4 md:pt-6 ${selectedAmount === option.amount ? "shadow-inner" : ""}`}
                 >
                   <div className="text-center">
-                    <div className="flex items-center justify-center gap-3 mb-4">
-                      <OptionIcon className="w-8 h-8" />
-                      <div className="text-4xl font-bold tracking-wide">¥{option.amount.toLocaleString()}</div>
+                    <div className="flex items-center justify-center gap-2 md:gap-3 mb-3 md:mb-4">
+                      <OptionIcon className="w-6 h-6 md:w-8 md:h-8" />
+                      <div className="text-3xl md:text-4xl font-bold tracking-wide">¥{option.amount.toLocaleString()}</div>
                     </div>
                   </div>
                 </CardHeader>
 
                 <CardContent
-                  className={`pt-8 pb-8 px-6 ${
+                  className={`pt-6 md:pt-8 pb-6 md:pb-8 px-4 md:px-6 ${
                     selectedAmount === option.amount ? "bg-gradient-to-b from-amber-100 to-yellow-200" : ""
                   }`}
                 >
                   <div className="text-center">
                     <p
-                      className={`text-lg font-medium ${
+                      className={`text-base md:text-lg font-medium ${
                         selectedAmount === option.amount ? "text-red-900" : "text-red-800"
                       }`}
                     >
@@ -534,32 +521,32 @@ export default function PrayerDetailPage({ params }: { params: { id: string } })
         {/* 購入ボタン */}
         {selectedAmount && (
           <div className="text-center">
-            <div className="wood-texture saisen-shadow rounded-xl p-8 max-w-md mx-auto wa-border mb-6">
-              <h3 className="text-2xl font-bold text-red-900 mb-4">選択された御祈祷</h3>
-              <p className="text-red-800 mb-2">{prayer.title}</p>
-              <p className="text-3xl font-bold text-amber-800">¥{selectedAmount.toLocaleString()}</p>
+            <div className="wood-texture saisen-shadow rounded-xl p-6 md:p-8 max-w-md mx-auto wa-border mb-4 md:mb-6">
+              <h3 className="text-xl md:text-2xl font-bold text-red-900 mb-3 md:mb-4">選択された御祈祷</h3>
+              <p className="text-sm md:text-base text-red-800 mb-2">{prayer.title}</p>
+              <p className="text-2xl md:text-3xl font-bold text-amber-800">¥{selectedAmount.toLocaleString()}</p>
             </div>
 
             <Button
               onClick={handlePurchase}
               size="lg"
-              className="shrine-gold-gradient hover:scale-110 transition-all duration-500 text-red-900 px-16 py-8 text-2xl font-bold shadow-2xl border-4 border-red-700 rounded-xl divine-glow"
+              className="w-full sm:w-auto shrine-gold-gradient hover:scale-110 transition-all duration-500 text-red-900 px-8 py-6 md:px-16 md:py-8 text-xl md:text-2xl font-bold shadow-2xl border-4 border-red-700 rounded-xl divine-glow"
             >
               ¥{selectedAmount.toLocaleString()}をお納めして御祈祷を受ける
             </Button>
           </div>
         )}
 
-        <div className="mt-12 text-center">
-          <div className="wood-texture backdrop-blur-sm rounded-lg p-8 max-w-2xl mx-auto saisen-shadow wa-border">
-            <h3 className="text-2xl font-bold text-red-900 mb-4">個別相談をご希望の方へ</h3>
-            <p className="text-red-800 mb-6 leading-relaxed text-pretty">
+        <div className="mt-8 md:mt-12 text-center">
+          <div className="wood-texture backdrop-blur-sm rounded-lg p-6 md:p-8 max-w-2xl mx-auto saisen-shadow wa-border">
+            <h3 className="text-xl md:text-2xl font-bold text-red-900 mb-3 md:mb-4">個別相談をご希望の方へ</h3>
+            <p className="text-sm md:text-base text-red-800 mb-4 md:mb-6 leading-relaxed text-pretty">
               より詳細な霊視や個別のご相談をご希望の方は、公式LINEにてお気軽にお問い合わせください。
             </p>
             <Button
               onClick={() => window.open("https://lin.ee/FsxTvpY", "_blank")}
               size="lg"
-              className="shrine-gold-gradient hover:scale-110 transition-all duration-500 text-red-900 px-12 py-6 text-xl font-bold shadow-2xl border-4 border-red-700 rounded-xl divine-glow"
+              className="w-full sm:w-auto shrine-gold-gradient hover:scale-110 transition-all duration-500 text-red-900 px-8 py-4 md:px-12 md:py-6 text-lg md:text-xl font-bold shadow-2xl border-4 border-red-700 rounded-xl divine-glow"
             >
               公式LINEで詳しく相談する
             </Button>
@@ -567,12 +554,12 @@ export default function PrayerDetailPage({ params }: { params: { id: string } })
         </div>
 
         {/* 注意事項 */}
-        <div className="mt-16 text-center">
-          <div className="wood-texture backdrop-blur-sm rounded-lg p-8 max-w-4xl mx-auto saisen-shadow wa-border">
-            <h3 className="text-2xl font-bold text-red-900 mb-4">
+        <div className="mt-12 md:mt-16 text-center">
+          <div className="wood-texture backdrop-blur-sm rounded-lg p-6 md:p-8 max-w-4xl mx-auto saisen-shadow wa-border">
+            <h3 className="text-lg md:text-2xl font-bold text-red-900 mb-3 md:mb-4">
               (御祈祷・御祈願・御祈念)占いで掲載している情報について
             </h3>
-            <p className="text-red-800 leading-relaxed text-pretty">
+            <p className="text-sm md:text-base text-red-800 leading-relaxed text-pretty">
               (御祈祷・御祈願・御祈念)占いサービスは娯楽を目的としたものであり、占いの結果および占いに伴う施術行為について、その効果、信頼性、正確性、完全性、有効性、特定の目的への適合性、実現性等を当社が保証するものではありません。
               サービスの結果をどのように利用するかは、お客様ご自身の自己責任において判断をお願いいたします。
               占いの結果およびその内容を踏まえておこなったお客様の行動により生ずる一切の損害について、当社および情報の提供者は一切責任を負いかねます。
