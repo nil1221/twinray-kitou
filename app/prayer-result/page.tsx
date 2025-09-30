@@ -22,7 +22,8 @@ export default function PrayerResultPage() {
       }
 
       try {
-        const response = await fetch(`/api/prayer-result?session_id=${sessionId}`)
+        // <CHANGE> APIエンドポイントを /api/verify-payment に修正
+        const response = await fetch(`/api/verify-payment?session_id=${sessionId}`)
         const data = await response.json()
 
         if (data.success) {
